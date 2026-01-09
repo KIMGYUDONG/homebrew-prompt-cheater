@@ -1,6 +1,4 @@
 class PromptCheater < Formula
-  include Language::Python::Virtualenv
-
   desc "Convert natural language to Claude-friendly XML prompts and inject into Tmux"
   homepage "https://github.com/KIMGYUDONG/prompt-cheater"
   url "https://files.pythonhosted.org/packages/41/43/dc155a536d4502801794f2c5f3d03f53bbb6246e4047df61e0d542360d78/prompt_cheater-0.1.0.tar.gz"
@@ -11,9 +9,17 @@ class PromptCheater < Formula
   depends_on "tmux"
 
   def install
-    virtualenv_create(libexec, "python3.12")
+    python = Formula["python@3.12"].opt_bin/"python3.12"
+
+    # Create virtual environment with pip
+    system python, "-m", "venv", libexec
+
+    # Install prompt-cheater from PyPI
+    system libexec/"bin/pip", "install", "--upgrade", "pip"
     system libexec/"bin/pip", "install", "prompt-cheater==0.1.0"
-    bin.install_symlink Dir[libexec/"bin/cheater"]
+
+    # Create symlink for the cheater command
+    bin.install_symlink libexec/"bin/cheater"
   end
 
   def caveats
