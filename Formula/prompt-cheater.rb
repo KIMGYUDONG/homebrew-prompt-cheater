@@ -12,8 +12,7 @@ class PromptCheater < Formula
 
   def install
     virtualenv_create(libexec, "python3.12")
-    system libexec/"bin/pip", "install", "-v", "--no-binary", ":all:",
-           "--ignore-installed", buildpath
+    system libexec/"bin/pip", "install", "prompt-cheater==0.1.0"
     bin.install_symlink Dir[libexec/"bin/cheater"]
   end
 
