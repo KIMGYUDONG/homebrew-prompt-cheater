@@ -1,8 +1,8 @@
 class PromptCheater < Formula
   desc "Convert natural language to Claude-friendly XML prompts and inject into Tmux"
   homepage "https://github.com/KIMGYUDONG/prompt-cheater"
-  url "https://files.pythonhosted.org/packages/41/43/dc155a536d4502801794f2c5f3d03f53bbb6246e4047df61e0d542360d78/prompt_cheater-0.1.0.tar.gz"
-  sha256 "b276b3fde9b729dd177ffbaaac980b198b960b124afc30549eef21d3e2a4b209"
+  url "https://files.pythonhosted.org/packages/43/d7/e1c5b401385cdd58f88a402add4f89baafaf7dd577e84ef35d5c34493e40/prompt_cheater-0.2.0.tar.gz"
+  sha256 "3c34b5b4faa82e4d99954bdb2d9f8a79dcad4d61d3165246e285021d4b893818"
   license "MIT"
 
   depends_on "python@3.12"
@@ -16,7 +16,7 @@ class PromptCheater < Formula
 
     # Install prompt-cheater from PyPI
     system libexec/"bin/pip", "install", "--upgrade", "pip"
-    system libexec/"bin/pip", "install", "prompt-cheater==0.1.0"
+    system libexec/"bin/pip", "install", "prompt-cheater==0.2.0"
 
     # Create symlink for the cheater command
     bin.install_symlink libexec/"bin/cheater"
